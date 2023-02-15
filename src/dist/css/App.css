@@ -1,0 +1,44 @@
+@import "Button.css";
+
+#container {
+  padding: 20px;
+}
+
+#header {
+  height: 70px;
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 70px;
+  vertical-align: middle;
+  background: black;
+  color: white;
+}
+
+.filter_box {
+  display: flex;
+  justify-content: space-between;
+  line-height: 30px;
+}
+
+.character_box {
+  background-color: beige;
+  margin-top: 15px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  font-size: 15px;
+  align-items: center;
+}
+
+.character {
+  flex: 5;
+}
+
+.title {
+  font-weight: bold;
+}
+.content {
+  margin-right: 10px;
+}

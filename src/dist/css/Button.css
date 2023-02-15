@@ -1,0 +1,39 @@
+.filter_btn {
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  background: #2F4058;
+  color: whitesmoke;    
+  padding: 8px 15px;
+  font-weight: 600;
+  font-size: 12px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 25%);
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.delete_btn {
+  flex: 1;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  background: rgb(248, 62, 62);
+  color: whitesmoke;   
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 25%);
+  cursor: pointer;
+  height: 30px;
+  line-height: 30px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#refresh_btn {
+  width: 25px;
+  vertical-align: middle;
+}
+
+#refresh_box span{
+  font-size: 14px;
+  margin-right: 5px;
+}
