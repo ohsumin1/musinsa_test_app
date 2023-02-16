@@ -12,9 +12,9 @@ const CharacterList = () => {
 
   return (
     <div>
-        { characterList.map((character, idx) => (
-            <CharacterItem key={idx} character={character}/>
-        ))}
+      {characterList.map((character, idx) => (
+        <CharacterItem key={idx} character={character} />
+      ))}
     </div>
   )
 }
