@@ -1,7 +1,7 @@
 import './dist/css/App.css';
 import Header from './components/Header';
 import Filter from './components/Filter';
-import Character from './components/Character';
+import CharacterList from './components/CharacterList';
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <Header />
       <div id="container">
         <Filter />
-        <Character />
+        <CharacterList />
       </div>
     </div>
   );
