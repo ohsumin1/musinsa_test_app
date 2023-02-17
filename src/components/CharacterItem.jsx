@@ -1,13 +1,7 @@
-import { useEffect, useState } from "react";
+import { getDataLength } from "../utils/util";
 
 const CharacterItem = ({ character }) => {
   const { name, aliases, titles, books, tvSeries } = character;
-  const getArrLength = (arr) => {
-    if (arr.length) {
-      return arr.filter(el => el).length;
-    }
-    return 0;
-  }
 
   return (
     <div className="character_box">
@@ -20,8 +14,8 @@ const CharacterItem = ({ character }) => {
           <span className="title">title : </span><span className="content">{titles?.length && titles.join(", ")}</span>
         </div>
         <div>
-          <span className="title">books : </span><span className="content">{getArrLength(books)}</span>
-          <span className="title">tv Sereies : </span><span className="content">{getArrLength(tvSeries)}</span>
+          <span className="title">books : </span><span className="content">{getDataLength(books)}</span>
+          <span className="title">tv Sereies : </span><span className="content">{getDataLength(tvSeries)}</span>
         </div>
       </div>
       <div className="delete_btn">삭제</div>
