@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { FILTERS } from "../utils/constants";
 
 const Filter = ({ useFilterContext }) => {
@@ -27,7 +28,7 @@ const Filter = ({ useFilterContext }) => {
     <div className="filter_box">
       <div>
         {Object.keys(FILTERS).map((key, idx) => (
-          <span key={idx} className="filter_btn" id={key} onClick={handleClick}>
+          <span key={idx} className={`filter_btn ${selectedFilters.hasOwnProperty(key) && 'on'}`} id={key} onClick={handleClick}>
             {FILTERS[key].text}
           </span>
         ))}
