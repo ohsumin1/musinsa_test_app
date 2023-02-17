@@ -1,10 +1,36 @@
-const Filter = () => {
+import { FILTERS } from "../utils/constants";
+
+const Filter = ({ useFilterContext }) => {
+  const [selectedFilters, setSelectedFilters] = useFilterContext();
+
+  const handleClick = (e) => {
+    const filterId = e.target.id;
+    if (!selectedFilters.hasOwnProperty(filterId)) {
+      setSelectedFilters(
+        prevState => ({ 
+          ...prevState, 
+          ...{[filterId]: FILTERS[filterId].searchValue} 
+        })
+      );
+    } else {
+      setSelectedFilters(
+        prevState => {
+          const newState = {...prevState};
+          delete newState[filterId];
+          return newState;
+        }
+      );
+    }
+  }
+
   return (
     <div className="filter_box">
       <div>
-        <span className="filter_btn">생존인물만</span>
-        <span className="filter_btn">여자</span>
-        <span className="filter_btn">tvSeries 없음</span>
+        {Object.keys(FILTERS).map((key, idx) => (
+          <span key={idx} className="filter_btn" id={key} onClick={handleClick}>
+            {FILTERS[key].text}
+          </span>
+        ))}
       </div>
       <div>
         <div id="refresh_box">
