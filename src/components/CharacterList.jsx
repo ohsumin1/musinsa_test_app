@@ -1,15 +1,40 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CharacterItem from "./CharacterItem";
 import { getDataLength } from "../utils/util" 
 
 const CharacterList = ({ useFilterContext, clickedRefresh }) => {
   const [characterList, setCharacterList] = useState([]);
   const [oldFilterStr, setOldFilterStr] = useState([]);
+  const [page, setPage] = useState(0);
   const [selectedFilters] = useFilterContext();
+  const loader = useRef(null);
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "100px",
+      threshold: 1.0
+    };
+
+    const observer = new IntersectionObserver(handleObserver, options);
+    if (loader.current) {
+      observer.observe(loader.current)
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [page]);
 
   useEffect(() => {
     searchCharacter();
   }, [selectedFilters])
+
+  const handleObserver = (entries) => {
+    if (entries[0].isIntersecting) {
+      setPage(prevPage => prevPage + 1);
+    }
+  }
 
   const searchCharacter = () => {
     const queryFilters = Object.fromEntries(Object.entries(selectedFilters)
@@ -26,15 +51,15 @@ const CharacterList = ({ useFilterContext, clickedRefresh }) => {
       }
     } 
     const params = new URLSearchParams(queryFilters);
-    fetchApi(params); 
+    fetchData(params); 
     setOldFilterStr(newFilterStr);
   }
 
-  const fetchApi = (params) => {
+  const fetchData = (params) => {
     const PAGE_SIZE = 10;
-    fetch(`https://www.anapioficeandfire.com/api/characters?page=1&pageSize=${PAGE_SIZE}&${params}`)
+    fetch(`https://www.anapioficeandfire.com/api/characters?page=${page}&pageSize=${PAGE_SIZE}&${params}`)
       .then(response => response.json())
-      .then(result => setCharacterList(result))
+      .then(result => setCharacterList(prevState => [...prevState, ...result]))
       .catch(error => console.log('error', error));
   }
 
@@ -58,6 +83,7 @@ const CharacterList = ({ useFilterContext, clickedRefresh }) => {
           clickedRefresh={clickedRefresh}
         />
       ))}
+      <div ref={loader} />
     </div>
   )
 }
