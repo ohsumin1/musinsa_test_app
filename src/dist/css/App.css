@@ -15,7 +15,7 @@
   color: white;
 }
 
-.filter_box {
+#filter_box {
   display: flex;
   justify-content: space-between;
   line-height: 30px;
