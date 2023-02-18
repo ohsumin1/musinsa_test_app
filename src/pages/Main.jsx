@@ -12,14 +12,17 @@ const useFilterContext = () => {
 
 const Main = () => {
   const selectedFilters = useState({});
+  const [clickedRefresh, setClickedRefresh] = useState(false);
 
   return (
     <FilterContext.Provider value={selectedFilters}>
       <div id="filter_box">
         <Filter useFilterContext={useFilterContext} />
-        <RefreshButton useFilterContext={useFilterContext}  />
+        <RefreshButton setClickedRefresh={setClickedRefresh} />
       </div>
-      <CharacterList useFilterContext={useFilterContext} />
+      <CharacterList 
+        useFilterContext={useFilterContext} 
+        clickedRefresh={clickedRefresh} />
     </FilterContext.Provider>
   )
 }

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CharacterItem from "./CharacterItem";
 import { getDataLength } from "../utils/util" 
 
-const CharacterList = ({ useFilterContext }) => {
+const CharacterList = ({ useFilterContext, clickedRefresh }) => {
   const [characterList, setCharacterList] = useState([]);
   const [oldFilterStr, setOldFilterStr] = useState([]);
   const [selectedFilters] = useFilterContext();
@@ -55,6 +55,7 @@ const CharacterList = ({ useFilterContext }) => {
         <CharacterItem 
           key={idx} 
           character={character} 
+          clickedRefresh={clickedRefresh}
         />
       ))}
     </div>

@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getDataLength } from "../utils/util";
 
-const CharacterItem = ({ character }) => {
+const CharacterItem = ({ character, clickedRefresh }) => {
   const { name, aliases, titles, books, tvSeries } = character;
   const [ show, setShow ] = useState(true);
+
+  useEffect(() => {
+    if (clickedRefresh) setShow(true);
+  }, [clickedRefresh])
  
-  const handleClick = () => {
+  const handleDelClick = () => {
     setShow(false);
   }
 
@@ -27,7 +31,7 @@ const CharacterItem = ({ character }) => {
             <span className="title">tv Sereies : </span><span className="content">{getDataLength(tvSeries)}</span>
           </div>
         </div>
-        <div className="delete_btn" onClick={handleClick}>삭제</div>
+        <div className="delete_btn" onClick={handleDelClick}>삭제</div>
       </div>
     }
     </>
