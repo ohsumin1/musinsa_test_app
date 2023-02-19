@@ -28,7 +28,7 @@ const CharacterItem = ({ character, clickedRefresh }) => {
           </div>
           <div>
             <span className="title">books : </span><span className="content">{getDataLength(books)}</span>
-            <span className="title">tv Sereies : </span><span className="content">{getDataLength(tvSeries)}</span>
+            <span className="title">tvSeries : </span><span className="content">{getDataLength(tvSeries)}</span>
           </div>
         </div>
         <div className="delete_btn" onClick={handleDelClick}>삭제</div>
