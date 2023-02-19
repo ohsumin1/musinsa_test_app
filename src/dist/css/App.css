@@ -1,5 +1,9 @@
 @import "Button.css";
 
+body {
+  margin: 0px;
+}
+
 #container {
   padding: 20px;
 }
