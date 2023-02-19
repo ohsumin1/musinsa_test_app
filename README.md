@@ -24,6 +24,7 @@
 
 ## 프로젝트 구조
 
+```
 📦src
  ┣ 📂components
  ┃ ┣ 📜CharacterItem.jsx
@@ -42,3 +43,4 @@
  ┃ ┗ 📜util.js
  ┣ 📜App.js
  ┗ 📜index.js
+```
