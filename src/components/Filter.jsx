@@ -26,13 +26,13 @@ const Filter = ({ useFilterContext }) => {
   return (
     <div>
       {Object.keys(FILTERS).map((key, idx) => (
-        <span
+        <div
           key={idx}
           className={`filter_btn ${selectedFilters.hasOwnProperty(key) && 'on'}`}
           id={key}
           onClick={handleFilterClick}>
           {FILTERS[key].text}
-        </span>
+        </div>
       ))}
     </div>
   )
