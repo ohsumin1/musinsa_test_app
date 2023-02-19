@@ -44,3 +44,6 @@
  ┣ 📜App.js
  ┗ 📜index.js
 ```
+
+## 프로젝트 구현 설명
+[notion](https://ohsumin.notion.site/de7947544c8949e6919c871d6f125bf0)
