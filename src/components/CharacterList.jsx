@@ -3,12 +3,16 @@ import CharacterItem from "./CharacterItem";
 import { getDataLength } from "../utils/util" 
 
 const CharacterList = ({ useFilterContext, clickedRefresh }) => {
+  const PAGE_SIZE = 10;
+  const pageParam = parseInt(new URLSearchParams(window.location.search).get('page'));
+  const defaultPage = pageParam || 0;
+  const loader = useRef(null);
+
   const [characterList, setCharacterList] = useState([]);
   const [params, setParams] = useState('');
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(defaultPage || 0);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
   const [selectedFilters] = useFilterContext();
-  const loader = useRef(null);
 
   useEffect(() => {
     fetchData(params);
@@ -17,7 +21,7 @@ const CharacterList = ({ useFilterContext, clickedRefresh }) => {
   useEffect(() => {
     if (!isInitialLoad) {
       changeParams();
-      setPage(0);
+      setPage(defaultPage);
     }
   }, [selectedFilters])
 
@@ -47,10 +51,9 @@ const CharacterList = ({ useFilterContext, clickedRefresh }) => {
   }
 
   const fetchData = (params) => {
-    const PAGE_SIZE = 10;
     fetch(`https://www.anapioficeandfire.com/api/characters?page=${page}&pageSize=${PAGE_SIZE}&${params}`)
       .then(response => response.json())
-      .then(result => page > 0 ? [...characterList, ...result] : result)
+      .then(result => page > defaultPage ? [...characterList, ...result] : result)
       .then(result => filterList(result))
       .then(result => setCharacterList(result))
       .then(isInitialLoad && setIsInitialLoad(false))
@@ -73,7 +76,7 @@ const CharacterList = ({ useFilterContext, clickedRefresh }) => {
           clickedRefresh={clickedRefresh}
         />
       ))}
-      {characterList.length > 0 && <div ref={loader} />}
+      {characterList.length >= PAGE_SIZE && <div ref={loader} />}
     </div>
   )
 }
