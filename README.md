@@ -18,29 +18,27 @@
 ## 기술 스택
 
 -   언어: [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
--   라이브러리: [React18](https://reactjs.org/)
+-   라이브러리: [React18](https://reactjs.org/) 
+    - 사용 이유: 컴포넌트 단위로 작성하여 재사용성과 가독성을 높이고 필터 선택, 아이템 삭제, 초기화 버튼 등 클릭시 UI 변경사항이 많이 일어나 불필요한 렌더링을 막기 위해 리액트를 사용하였습니다.
 -   패키지 매니저: [npm](https://www.npmjs.com/)
 
 ## 프로젝트 구조
 
 📦src
  ┣ 📂components
- ┃ ┣ 📜CharacterItem.jsx  [character Item 컴포넌트]
- ┃ ┣ 📜CharacterList.jsx  [character List 컴포넌트]
- ┃ ┣ 📜Filter.jsx         [상단 검색 필터 컴포넌트]
- ┃ ┣ 📜Header.jsx         [타이틀 컴포넌트]
- ┃ ┗ 📜RefreshButton.jsx  [초기화 버튼 컴포넌트]
+ ┃ ┣ 📜CharacterItem.jsx
+ ┃ ┣ 📜CharacterList.jsx
+ ┃ ┣ 📜Filter.jsx
+ ┃ ┣ 📜Header.jsx
+ ┃ ┗ 📜RefreshButton.jsx
  ┣ 📂dist
  ┃ ┗ 📂css
- ┃ ┃ ┣ 📜App.css        
- ┃ ┃ ┗ 📜Button.css     
+ ┃ ┃ ┣ 📜App.css
+ ┃ ┃ ┗ 📜Button.css
  ┣ 📂pages
- ┃ ┗ 📜Main.jsx           [메인 페이지]
+ ┃ ┗ 📜Main.jsx
  ┣ 📂utils
- ┃ ┣ 📜constants.js       [상수 관리 JS파일]
- ┃ ┗ 📜util.js            [util 함수 관리 JS파일]
- ┣ 📜App.js           
+ ┃ ┣ 📜constants.js
+ ┃ ┗ 📜util.js
+ ┣ 📜App.js
  ┗ 📜index.js
-
-## 작성자
-오수민
