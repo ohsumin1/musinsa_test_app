@@ -1,4 +1,4 @@
-import './dist/css/App.css';
+import './asset/css/App.css';
 import Header from './components/Header';
 import Main from './pages/Main';
 

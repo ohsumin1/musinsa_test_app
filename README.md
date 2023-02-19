@@ -32,7 +32,7 @@
  ┃ ┣ 📜Filter.jsx
  ┃ ┣ 📜Header.jsx
  ┃ ┗ 📜RefreshButton.jsx
- ┣ 📂dist
+ ┣ 📂asset
  ┃ ┗ 📂css
  ┃ ┃ ┣ 📜App.css
  ┃ ┃ ┗ 📜Button.css
