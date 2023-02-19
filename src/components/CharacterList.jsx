@@ -3,7 +3,6 @@ import CharacterItem from "./CharacterItem";
 import { getDataLength } from "../utils/util" 
 
 const CharacterList = ({ useFilterContext, clickedRefresh }) => {
-  const PAGE_SIZE = 10;
   const pageParam = parseInt(new URLSearchParams(window.location.search).get('page'));
   const defaultPage = pageParam || 0;
   const loader = useRef(null);
@@ -51,6 +50,7 @@ const CharacterList = ({ useFilterContext, clickedRefresh }) => {
   }
 
   const fetchData = (params) => {
+    const PAGE_SIZE = 10;
     fetch(`https://www.anapioficeandfire.com/api/characters?page=${page}&pageSize=${PAGE_SIZE}&${params}`)
       .then(response => response.json())
       .then(result => page > defaultPage ? [...characterList, ...result] : result)
@@ -76,7 +76,7 @@ const CharacterList = ({ useFilterContext, clickedRefresh }) => {
           clickedRefresh={clickedRefresh}
         />
       ))}
-      {characterList.length >= PAGE_SIZE && <div ref={loader} />}
+      {characterList.length > 0 && <div ref={loader} />}
     </div>
   )
 }
